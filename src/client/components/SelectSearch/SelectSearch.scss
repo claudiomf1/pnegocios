@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  overflow-y: scroll;
+}
+
+.ListaOptions {
+  height: 150px;
+  cursor: pointer;
+  overflow-y: scroll;
+}
+
+.btn-primary[valor="Selecione"] {
+  color: rgb(158, 171, 177);
+}
+
+.btn-primary {
+  width: 240px;
+}
+
+.table {
+  --bs-table-hover-bg: #198754;
+}

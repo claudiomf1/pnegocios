@@ -9,6 +9,12 @@ function Nav() {
         <li>
           <Link to="/about">About</Link>{" "}
         </li>
+        <li>
+          <Link to="/formulario">Formulario</Link>{" "}
+        </li>
+        <li>
+          <Link to="/formcliente">Cadastro de Cliente</Link>{" "}
+        </li>
       </ul>
     </>
   );

@@ -1,0 +1,75 @@
+#iconeCliente {
+  cursor: pointer;
+}
+
+#divObs {
+  position: absolute;
+  left: 0px;
+  top: 310px;
+  width: 700px;
+}
+
+#Obs {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 650px;
+}
+
+#Estado {
+  position: absolute;
+  width: 330px;
+  height: 40px;
+}
+
+#btnExcluir {
+  position: absolute;
+  left: 570px;
+}
+
+#btnEditar {
+  position: absolute;
+  left: 390px;
+}
+
+#btnSalvar {
+  position: absolute;
+  left: 190px;
+}
+
+#CaixaMsg {
+  display: none;
+  position: fixed;
+  background: #000;
+  border-radius: 7px;
+  width: 550px;
+  heigth: 250px;
+  left: 100px;
+  top: 100px;
+  z-index: 1;
+}
+
+#CaixaMsg > div {
+  background: #fff;
+  margin: 6px;
+}
+
+#CaixaMsg > div > #TituloMsg {
+  background: #ffff00;
+  font-size: 22px;
+  padding: 10px;
+  color: #000;
+}
+#CaixaMsg > div > #CorpoMsg {
+  background: #4169e1;
+  font-size: 15px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+#CaixaMsg > div > #RodapeMsg {
+  background: #4169e1;
+  padding: 10px;
+  text-align: center;
+}
