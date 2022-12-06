@@ -1,11 +1,12 @@
-import "./EstiloFormCliente.scss";
-
+// import "./EstiloFormCliente.scss";
+import { retorna_dadosct } from "./FormCliente-js";
+import { dadosct } from "./FormCliente-js";
 // import "./FormCliente-js.js";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import SelectSourch from "../SelectSearch/SelectSearch";
 
-const initialData = [
+let intialData = [
   ["Selecione"],
   ["Claudio"],
   ["Augusto"],
@@ -15,21 +16,11 @@ const initialData = [
   ["Farinha"],
   ["Felicidade"],
 ];
-
-let dadosct;
-function setDataForSearchCliente() {
-  google.script.run
-    .withSuccessHandler(function (options) {
-      // carrega a variavel dadosct que sao todas as categorias do banco
-      dadosct = options.slice();
-    })
-    .getDataForSearchCliente("cad.cliente", "c6:c");
-}
-
-setDataForSearchCliente();
-console.log("teste " + dadosct);
-
+retorna_dadosct();
+//let initialData = [...dadosct];
+//const initialData = [...retorna_dadosct()];
 function FormCliente() {
+  //console.log(dadosct);
   return (
     <Form>
       <div id="CaixaMsg">
@@ -39,7 +30,7 @@ function FormCliente() {
           <div id="RodapeMsg"></div>
         </div>
       </div>
-      <SelectSourch titulo="Escolha um cliente" initialData={initialData} />
+      <SelectSourch titulo="Escolha um cliente" initialData={dadosct} />
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Clientes</Form.Label>
         <Form.Control type="email" placeholder="Enter cliente" />

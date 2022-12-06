@@ -145,7 +145,7 @@ function VerificarCliente() {
   }
 }
 
-document.getElementById("btnSalvar").addEventListener("click", SalvarCliente);
+// document.getElementById("btnSalvar").addEventListener("click", SalvarCliente);
 //--------------------------------------------------------------------------------------------
 function SalvarCliente() {
   let Cliente = CampoCliente.value;
@@ -197,7 +197,7 @@ function SalvarCliente() {
   }
 }
 
-document.getElementById("ListaCliente").addEventListener("input", Pesquisar);
+// document.getElementById("ListaCliente").addEventListener("input", Pesquisar);
 
 function Pesquisar() {
   let nomeCliente = CampoListaCliente.value;
@@ -230,7 +230,7 @@ function Carregar(r) {
   }
 }
 
-document.getElementById("btnLimpar").addEventListener("click", Limpar);
+// document.getElementById("btnLimpar").addEventListener("click", Limpar);
 
 function Limpar() {
   CampoCliente.value = "";
@@ -245,7 +245,7 @@ function Limpar() {
   AtualizarClientes();
 }
 
-document.getElementById("btnEditar").addEventListener("click", EditarCliente);
+// document.getElementById("btnEditar").addEventListener("click", EditarCliente);
 
 function EditarCliente() {
   let nomeCliente = CampoListaCliente.value;
@@ -352,7 +352,7 @@ function AtualizarClientes() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", PesquisaAbrir);
+// document.addEventListener("DOMContentLoaded", PesquisaAbrir);
 
 function PesquisaAbrir() {
   if (CampoListaCliente.value != "") {
@@ -360,7 +360,7 @@ function PesquisaAbrir() {
   }
 }
 
-document.getElementById("iconeCliente").addEventListener("click", FormFiltro);
+// document.getElementById("iconeCliente").addEventListener("click", FormFiltro);
 
 function FormFiltro() {
   let Cliente = CampoListaCliente.value;
@@ -373,3 +373,83 @@ function FormFiltro() {
     .withSuccessHandler()
     .FormFiltroClientes(Cliente, Cnpj, Contato, Estado, Cidade);
 }
+export let dadosct;
+
+let tokenClient;
+let gapiInited = false;
+let gisInited = false;
+const CLIENT_ID =
+  "167620078508-hhncerbeqjk9s1eo7f5ah71fekljd1ob.apps.googleusercontent.com";
+const API_KEY = "AIzaSyDs11gmvAQb2xdRL_fWVvhrTRKyz4NoZ5w";
+
+// Discovery doc URL for APIs used by the quickstart
+const DISCOVERY_DOC =
+  "https://sheets.googleapis.com/$discovery/rest?version=v4";
+const SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+async function intializeGapiClient() {
+  await gapi.client.init({
+    apiKey: API_KEY,
+    discoveryDocs: [DISCOVERY_DOC],
+  });
+  gapiInited = true;
+}
+
+//-------------------------------------------
+const scripts = [
+  "https://apis.google.com/js/api.js",
+  "https://accounts.google.com/gsi/client",
+];
+function loadScripts(scripts) {
+  let script = scripts.shift();
+
+  let el = document.createElement("script");
+  el.src = script;
+  document.body.appendChild(el);
+  if (scripts.length) {
+    loadScripts(scripts);
+  } else {
+    console.log("run app");
+  }
+  // el.onload = function (script) {
+  //   // console.log(scripts.shift() + " loaded!");
+
+  // };
+}
+
+//loadScripts(scripts);
+
+//-----------------------------------------------------------------------
+let dadosct2;
+function setDataForSearchCliente() {
+  const myPromisse = new Promise((resolve, reject) => {
+    let response = gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: "1DHcDn2eTzk6VNa3x3fhQ1X_RgTpGHfV09VWxHD2gk54",
+      range: "Clientes!A6:C",
+    });
+    if (response) {
+      const range = response.result;
+      resolve((dadosct = [...range.values]));
+      return dadosct;
+    }
+  });
+
+  myPromisse.then((data) => {
+    alert(data);
+  });
+
+  //alert(dadosct);
+  // await gapi.google.script.run
+  //   .withSuccessHandler(options)
+  //   .getDataForSearch("clientes", "c6:c");
+
+  // async function options(dados) {
+  //   dadosct = [...dados];
+  //   console.log(dadosct);
+  // }
+  // dadosct2 = [...dadosct];
+}
+export function retorna_dadosct() {
+  return setDataForSearchCliente();
+}
+
+//-------------------------------------------------------------------------------
