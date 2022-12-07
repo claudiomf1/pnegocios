@@ -419,37 +419,31 @@ function loadScripts(scripts) {
 //loadScripts(scripts);
 
 //-----------------------------------------------------------------------
-let dadosct2;
-function setDataForSearchCliente() {
-  const myPromisse = new Promise((resolve, reject) => {
-    let response = gapi.client.sheets.spreadsheets.values.get({
+
+async function setDataForSearchCliente() {
+  const myPromisse = new Promise(async (resolve, reject) => {
+    let response = await gapi.client.sheets.spreadsheets.values.get({
       spreadsheetId: "1DHcDn2eTzk6VNa3x3fhQ1X_RgTpGHfV09VWxHD2gk54",
       range: "Clientes!A6:C",
     });
     if (response) {
-      const range = response.result;
-      resolve((dadosct = [...range.values]));
-      return dadosct;
+      console.log(response.result.values);
+      //alert(response.result.values);
+      return response.result.values;
     }
   });
-
-  myPromisse.then((data) => {
-    alert(data);
-  });
-
-  //alert(dadosct);
-  // await gapi.google.script.run
-  //   .withSuccessHandler(options)
-  //   .getDataForSearch("clientes", "c6:c");
-
-  // async function options(dados) {
-  //   dadosct = [...dados];
-  //   console.log(dadosct);
-  // }
-  // dadosct2 = [...dadosct];
 }
 export function retorna_dadosct() {
   return setDataForSearchCliente();
 }
+//alert(dadosct);
+// await gapi.google.script.run
+//   .withSuccessHandler(options)
+//   .getDataForSearch("clientes", "c6:c");
 
+// async function options(dados) {
+//   dadosct = [...dados];
+//   console.log(dadosct);
+// }
+// dadosct2 = [...dadosct];
 //-------------------------------------------------------------------------------

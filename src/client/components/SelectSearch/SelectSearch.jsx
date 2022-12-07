@@ -37,7 +37,7 @@ function SelectSourch(props) {
     listaColsTable,
     resultsArray
   ) {
-    console.log(resultsArray);
+    // console.log(resultsArray);
     let searchResultsBox = document.getElementById(searchResults_p); // corpo da table html
 
     let templateBox = document.getElementById(rowTemplate_p); // modelo da linha da table

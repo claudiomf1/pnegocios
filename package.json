@@ -29,6 +29,7 @@
     "-": "^0.0.1",
     "@types/google-apps-script": "^1.0.56",
     "bootstrap": "^5.2.2",
+    "cors": "^2.8.5",
     "gas-client": "^1.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",

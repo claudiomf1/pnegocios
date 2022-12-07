@@ -5,6 +5,7 @@ import Nav from "./client/Nav";
 import FormInput from "./client/components/Formimput/FormInput";
 import FormClient from "./client/components/FormCliente/FormCliente";
 import "bootstrap/dist/css/bootstrap.min.css";
+let cors = require("cors");
 
 function App() {
   return (
